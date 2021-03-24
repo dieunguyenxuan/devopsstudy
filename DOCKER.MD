@@ -101,7 +101,7 @@
 *ví dụ:* `docker run -p 111:222/udp`  
 
 ## Liên kết các container thông qua host
-![alt](nework.png)
+![alt](network.png)
 
 
 
