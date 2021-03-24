@@ -9,8 +9,14 @@
 *Chạy một contaniner từ images*  
 ` docker run <image:tag> `  
 *Kiểm tra các container đang chạy*  
-` docker ps`
+` docker ps`  
+*Liệt kê tất cả các container đang chạy và đã dừng*  
+`docker ps -a`  
+*Liệt kê các container đã dừng*  
+`docker ps -l`  
+
 ## Vòng đời của docker
+![alt](docker_life.png)  
 
 
 
