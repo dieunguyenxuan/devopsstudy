@@ -103,6 +103,29 @@
 ## Liên kết các container thông qua host
 ![alt](network.png)
 
+## Liên kết trực tiếp các container
+![alt](network_direct.png)
+* Dùng để kiểm tra xem container đang chạy gì và ở chỗ nào
+* Kết nối tất cả các cổng, nhưng 1 chiều
+* Chỉ dành cho các dịch vụ mà không thể chạy trên nhiều host khác nhau  
+`docker run --link <name container caanf link> --name <name> <image>`  
+* Tự động gán hostname
+* Liên kết có thể bị đứt nếu container khởi động lại
+## Liên kết động giữa các container
+* Docker cung cấp tính năng tạo mạng riêng nội bộ
+* Name Server với cơ chế quản lý địa chỉ IP và name
+* Cần tạo lập mạng trước rồi chạy các container liên quan
+` docker network create [OPTIONS] [name network]`  
+*Khởi chạy container trong network*  
+`docker run --net=<network name> --name <name> <image>`  
+
+## Địa chỉ IP sử dụng trong các service
+* Service lắng nghe từ local machine mặc định chỉ được truy cập từ bên trong container
+* Để cho phép truy cập từ ngoài cần bind address thành 0.0.0.0
+* Nên dùng Docker để giới hạn truy cập, chỉ cho phép truy cập từ host
+* ví dụ: `docker run -p 127.0.0.1:111:111/tcp` chỉ cho phép host có địa chỉ ip 127.0.0.1 truy cập vào port 111 của container  
+
+
 
 
 
