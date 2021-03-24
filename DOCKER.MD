@@ -86,7 +86,7 @@
  ## Một số lưu ý:
  * Hạn chế việc để container lấy dependency khi khởi động container
  * Tránh để các file quan trọng trong container không tên
-## Network trong Container
+# Network trong Container
 * các chương trình trong container được mặc định tách biệt hoàn toàn với internet
 * Nhóm các  container lại thành một mạng nội bộ
 * Kiểm soát sự liên kết giữa container này với container kia
@@ -98,7 +98,10 @@
 * Nếu không chỉ định cổng bên ngoài thì port bên ngoài sẽ được mở ngẫu nhiên, port bên trong là cố định. Để kiểm tra các port đã mở trên container: `docker port <container id hoặc name>`
 * Cho phép nhiều container chạy các chương trình với cổng cố định
 * Mặc định docker mở TCP, nếu muốn mở udp thì làm như sau: `docker run -p outside-port:inside-port/protocol`  
-*ví dụ:* `docker run -p 111:222/udp`   
+*ví dụ:* `docker run -p 111:222/udp`  
+
+## Liên kết các container thông qua host
+![alt](nework.png)
 
 
 
