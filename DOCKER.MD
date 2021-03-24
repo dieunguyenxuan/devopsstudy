@@ -4,12 +4,12 @@
 * Docker Registry (Docker Hub)
 ## Docker image
 *Liệt kê các image* 
- ` docker images `
+  ` docker images `
 ## Chạy một contaniner
 *Chạy một contaniner từ images* 
- ` docker run <image:tag> `
+  ` docker run <image:tag> `
 *Kiểm tra các container đang chạy* 
- ` docker ps`
+  ` docker ps`
 ## Vòng đời của docker
 
 
