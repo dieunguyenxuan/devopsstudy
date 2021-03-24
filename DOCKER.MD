@@ -7,7 +7,7 @@
 ` docker images `
 ## Chạy một contaniner
 *Chạy một contaniner từ images*  
-` docker run <image:tag> `
+` docker run <image:tag> `  
 *Kiểm tra các container đang chạy*  
 ` docker ps`
 ## Vòng đời của docker
