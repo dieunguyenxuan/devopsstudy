@@ -14,7 +14,7 @@
 ` docker ps`  
 *Attach một container đang chạy nền*  
 `docker attach <container id>`  
-*Để Detach trở lại ấn tổ hợp phím Ctrl+P hoặc Ctrl+Q*  
+*Để Detach trở lại ấn tổ hợp phím  Ctrl+Q*  
 *Liệt kê tất cả các container đang chạy và đã dừng*  
 `docker ps -a`  
 *Liệt kê container vừa dừng*  
