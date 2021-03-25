@@ -157,13 +157,21 @@ chạy tiếp một container thứ 2 và share chung volume với container 1: 
 * lệnh build docker image từ docker file `docker build -t <name>:<tag> <đường dẫn tới Dockerfile>
 * Khi build xong, image sẽ nàm ở local registry trên máy
 * Một số lện trong dockerfile
-- FROM <image>:<tag> : nguồn image, là lệnh đầu tiên trong Dockefile *ví dụ:* FROM ubuntu:16.04  
-- MAINTAINER <tên>: chỉ là dạng ghi chú và thông tin tác giả  
-- RUN <command>: chạy lệnh đợi lệnh chạy xong và lưu kết quả  
-- ADD: thêm local file ADD data.txt/data.txt, thêm nội dung file tar ADD source-code.tar.gz /src/ tự động giải nén vào thư mục /src/. Download dữ liệu tử url ADD https://url /data/  
-- ENV: khai báo các biến môi trường sau khi image được build các biến này vẫn tồn tại: *ví dụ:* `ENV LOG_FOLDER=/app_dirs/logs/`  
-- ENTRYPOINT khai báo sự bắt đầu cho lệnh được chạy khi bạn không chắc thì nên chạy CMD  
- - CMD khai báo toàn bộ lệnh được chạy  
+- **FROM** <image>:<tag> : nguồn image, là lệnh đầu tiên trong Dockefile *ví dụ:* FROM ubuntu:16.04  
+- **MAINTAINER** <tên>: chỉ là dạng ghi chú và thông tin tác giả  
+- **RUN** <command>: chạy lệnh đợi lệnh chạy xong và lưu kết quả  
+- **ADD**: thêm local file ADD data.txt/data.txt, thêm nội dung file tar ADD source-code.tar.gz /src/ tự động giải nén vào thư mục /src/. Download dữ liệu tử url ADD https://url /data/  
+- **ENV**: khai báo các biến môi trường sau khi image được build các biến này vẫn tồn tại: *ví dụ:* `ENV LOG_FOLDER=/app_dirs/logs/`  
+- **ENTRYPOINT** khai báo sự bắt đầu cho lệnh được chạy khi bạn không chắc thì nên chạy CMD  
+- **CMD** khai báo toàn bộ lệnh được chạy  
+- **ENTRYOINT, RUN, CMD** có thể sử dụng cả hai dạng lệnh Shell và Exec  
+- **EXPOSE <PORT>** mở cổng container  
+- **VOLUME ['/host/path' '/container/path']** định nghĩa volume giữa host với container nên tránh việc share này vì container chỉ chạy trên host của bạn
+- **VOLUME ['/folder']** định nghĩa volume giữa các container
+- **WORKDIR /temp/** toàn bộ các lệnh run sẽ được chạy trong folder temp
+- **USER** khai báo user chạy container
+
+
 
 
 
