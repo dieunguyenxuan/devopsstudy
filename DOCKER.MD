@@ -3,8 +3,19 @@
 * Docker Host
 * Docker Registry (Docker Hub)
 ## Docker image
-*Liệt kê các image*   
-` docker images `
+* Liệt kê các image  
+` docker images `  
+*Tải một image về  
+`docker pull <image>`
+* Cấu trúc tên:
+`registry.repo.com:port/organization/image-name:version-tag`
+* Xóa image
+` docker rmi <id hoặc name iamge>`  
+* Xóa tất cả image
+`docker rmi $(docker image -q)`
+* backup image `docker save -o <namefile.tar.gz> <danh sách các image cần backup>`
+* phục hồi image `docker load -i <file backup.tar.gz> <image>`
+
 ## Chạy một contaniner
 *Chạy một contaniner từ images*  
 ` docker run <image:tag> `  
@@ -125,6 +136,34 @@
 * Nên dùng Docker để giới hạn truy cập, chỉ cho phép truy cập từ host
 * ví dụ: `docker run -p 127.0.0.1:111:111/tcp` chỉ cho phép host có địa chỉ ip 127.0.0.1 truy cập vào port 111 của container  
 
+# Docker Registry
+* Docker registry quản lý và phân phối image
+* Có thể setup một registry cho cá nhân hoặc doanh nghiệp
+* Có thể tìm kiếm image qua cli `docker search <keywork>` hoặc tìm trên https://hub.docker.com
+* login vào docker hub: `docker login` nhập vào username và password
+* upload image lên docker hub: `docker push <image>:<tag> `
+# Volume
+* Đĩa ảo để chứa và chia sẻ dữ liệu
+* Có 2 loại chính là Volume giữa host và cointainer: Khi tao dữ liệu thì nó sẽ nằm trên host khi container bị xóa thì vẫn có thể truy cập được vào dữ liệu, Volume giữa các container khi không có container nào sử dụng nữa thì nó sẽ tự động bị loại bỏ
+
+* Volume dữ liệu local trên host không phải là một thành phần của image
+* map thư mục vào container: `docker run -v <thư mục trên host>:<thư mục trong container>`
+* Có thể chia sẻ thư mục hoặc file đơn lẻ với host, File cần được tạo trước khi chạy container nếu không folder cha sẽ được chia sẻ
+## Chia sẻ dữ liệu giữa các container
+*ví dụ:* chạy một container và tạo ra một volume share `docker run -it --name pc1 -v /share ubuntu bash`  
+chạy tiếp một container thứ 2 và share chung volume với container 1: ` docker run -it --name pc2 --volumes-from pc1 ubuntu bash`  
+# Dockerfile
+* File định nghĩa tất cả những thứ cần tạo ra trong image
+* lệnh build docker image từ docker file `docker build -t <name>:<tag> <đường dẫn tới Dockerfile>
+* Khi build xong, image sẽ nàm ở local registry trên máy
+* Một số lện trong dockerfile
+- FROM <image>:<tag> : nguồn image, là lệnh đầu tiên trong Dockefile *ví dụ:* FROM ubuntu:16.04  
+- MAINTAINER <tên>: chỉ là dạng ghi chú và thông tin tác giả  
+- RUN <command>: chạy lệnh đợi lệnh chạy xong và lưu kết quả  
+- ADD: thêm local file ADD data.txt/data.txt, thêm nội dung file tar ADD source-code.tar.gz /src/ tự động giải nén vào thư mục /src/. Download dữ liệu tử url ADD https://url /data/  
+- ENV: khai báo các biến môi trường sau khi image được build các biến này vẫn tồn tại: *ví dụ:* `ENV LOG_FOLDER=/app_dirs/logs/`  
+- ENTRYPOINT khai báo sự bắt đầu cho lệnh được chạy khi bạn không chắc thì nên chạy CMD  
+ - CMD khai báo toàn bộ lệnh được chạy  
 
 
 
